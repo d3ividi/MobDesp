@@ -1,0 +1,88 @@
+<div ui-content-for="title">
+  <span>Formulário</span>
+</div>
+
+<div class="scrollable" ng-controller="formController">
+ <div class="scrollable-content section">
+   
+  <form ng-submit='enviar()' >
+    <fieldset>
+   
+        <!--Tipo de registro-->
+        <div class="form-group">
+          <label>Tipo registro</label>
+          <select name="tipoRegistro"
+                  ng-model="lmto.tipoRegistro"
+                  class="form-control"
+                  ng-change="showCategorias()"
+                  required>
+              <option></option>
+              <option>Entrada</option>
+              <option>Saída</option>
+          </select>
+        </div>
+        <!--Fim tipo registro-->
+
+        <!--Categoria-->
+        <div class="form-group">
+          <label>Categoria</label>
+          <select name="categoria"
+                  required
+                  ng-options="categoria as categoria for categoria in params.categoria"
+                  ng-model="categoria"
+                  class="form-control">
+              <option></option>
+              
+          </select>
+        </div>
+        <!--Fim categoria-->
+        
+        <!--Descrição do lançamento-->
+        <div class="form-group">
+          <label>Detalhes</label>
+          <input type="text" 
+                 class="form-control"
+                 ng-model="lmto.detalhes"
+                 required
+                 placeholder="Descreva o lançamento">
+        </div>
+        <!--Fim Descrição do lançamento-->
+        
+        <!--Valor-->
+        <div class="form-group">
+          <label>Valor</label>
+          <input type="text" 
+                 class="form-control"
+                 ui-money-mask
+                 required
+                 ng-model="lmto.valor"
+                 placeholder="R$ 10,00">
+        </div>
+        <!--Fim valor-->
+        <hr>
+        <button class="btn btn-primary btn-block">
+            Enviar
+        </button>
+    </fieldset>
+    <hr>
+    <div class="{{transaction.status ? 'alert-success':'alert-danger'}} 
+       animated alert
+       {{transaction.message? 'fadeIn' : 'fadeOut'}}"
+       ng-show="transaction.message">
+        <i  class="btn btn-lg btn-primary pull-right btn-close" ng-click="transaction.message=null"><span class="fa fa-close"></span></i>
+        <p ng-bind-html="transaction.message"></p>
+            
+    </div>
+        
+         
+
+
+    
+
+<!--    <div ui-content-for="navbarAction">
+      <a class='btn' ng-click='login()'>Login</a>
+    </div>-->
+
+  </form>
+ </div>
+</div>

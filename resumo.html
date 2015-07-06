@@ -1,0 +1,63 @@
+<div ui-content-for="title">
+  <span>Resumo Mensal</span>
+</div>
+
+<div class="scrollable" ng-controller="resumo">  
+  <div class="scrollable-content">
+
+    <div class="list-group text-center">
+      <div class="list-group-item list-group-item-home">
+        <div>
+          <i class="fa fa-area-chart feature-icon text-primary"></i>
+        </div>
+        <div class="form-group">      
+            <label class="control-label">Mês </label>
+            <p class="input-group">
+                <input type="text" 
+                       class="form-control" 
+                       formatteddate="resumo.data"
+                       datepicker-popup="dd/MM/yyyy"
+                       show-button-bar="false"
+                       ng-model="resumo.data"
+                       show-weeks="false"
+                       is-open="opened" 
+                       current-text="Hoje"
+                       clear-text="Limpar"
+                       close-text="Fechar"
+                       ng-required="true"
+                       maxlength="10"
+                       ng-click="openCalendar($event)"
+                       required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="fa fa-calendar"></i></button>
+            </span>
+            </p>
+        </div>             
+        <div>
+            <h4>Entradas</h4>
+            <h4 style="color: #007aff">{{resumo.entrada | currency}}</h4>
+            <br>
+            <h4 >Saídas</h4>
+            <h4 style="color: #d80b00">{{resumo.saida | currency}}</h4>
+            <br>
+            <h4 >Saldo</h4>
+            <h4 style="color:{{resumo.saldo < 0 ? '#d80b00' :'#007aff'}}">{{resumo.saldo | currency}}</h4>
+        </div>
+      </div>
+
+
+      <div class="list-group-item list-group-item-home">
+
+      </div>
+
+
+      <div class="list-group-item list-group-item-home">
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
