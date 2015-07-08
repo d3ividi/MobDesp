@@ -36,7 +36,8 @@ app.config(function($routeProvider) {
 app.constant('config',{
     idSheet : '1H4vqt6L-pamS9sA5n_6qt_Sf2sY1N-bbhx3fxu1ZQSg',
     sheetResumo : 'Resumo',
-    sheetDados : 'Entrada de Dados'
+    sheetDados : 'Entrada de Dados',
+    sheetBalanco : 'Conciliação e Balanço'
 });
 
 

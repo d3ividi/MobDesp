@@ -1,4 +1,4 @@
-app.controller('resumo',function($rootScope, $scope,googleSheet,config){
+app.controller('resumo',function($rootScope, $scope, googleSheet, $filter, config){
     $rootScope.loading = true;
     
     $scope.meses = [
@@ -48,7 +48,6 @@ app.controller('resumo',function($rootScope, $scope,googleSheet,config){
         googleSheet.setSpreadSheetId(config.idSheet);
         googleSheet.setSheetName(config.sheetResumo);
         googleSheet.getColumnData(['mesEAno','entrada','saida'],'associativeArray',function(data,status,message){
-           console.log(data);
            angular.forEach(data,function(item){
                if(item.mesEAno === $scope.mes+","+$scope.ano){
                     $rootScope.loading = false;
@@ -57,8 +56,15 @@ app.controller('resumo',function($rootScope, $scope,googleSheet,config){
                     $scope.resumo.saldo = item.entrada - item.saida;
                }
            });
-           $rootScope.loading = false;
+
+            $rootScope.loading = false;
+           
         });
     };
+    
     $scope.updateResumo();
+    
+    console.log(new Date($scope.ano, $scope.mes, 0));
+    console.log($filter('date')(new Date($scope.ano, $scope.mes, 0),'ddMMyyyy'));
+    
 });

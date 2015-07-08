@@ -1,29 +1,30 @@
 <div ui-content-for="title">
-  <span>Resumo Mensal</span>
+  <span>Resumo</span>
 </div>
 
 <div class="scrollable" ng-controller="resumo">  
   <div class="scrollable-content">
       
     <div class="list-group text-center">
-      <div class="list-group-item list-group-item-home">
           
-          <div class="form-group">
-            <select class="form-control"
-                    ng-options="mes.value as mes.label for mes in meses"
-                    ng-model="mes"
-                    ng-change="updateResumo()">
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <select class="form-control"
-                    ng-options="ano as ano for ano in anos"
-                    ng-model="ano">
-                <option>Janeiro</option>
-            </select>
-          </div>
-          
+    <div class="list-group-item list-group-item-home">  
+        <h3>Mensal</h3>
+        <div class="form-group">
+          <select class="form-control"
+                  ng-options="mes.value as mes.label for mes in meses"
+                  ng-model="mes"
+                  ng-change="updateResumo()">
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select class="form-control"
+                  ng-options="ano as ano for ano in anos"
+                  ng-model="ano">
+              <option>Janeiro</option>
+          </select>
+        </div>
+
         <div>
             <b>Entradas:</b>
             <p style="color: #007aff">{{resumo.entrada | currency}}</p>
@@ -33,10 +34,14 @@
 
             <b>Saldo:</b>
             <p style="color:{{resumo.saldo < 0 ? '#d80b00' :'#007aff'}}">{{resumo.saldo | currency}}</p>
-        </div>
-      </div>
 
-    </div>
+        </div>         
+
+  </div>
+  <div class="list-group-item list-group-item-home"> 
+
+  </div>
+        
 
   </div>
 </div>
