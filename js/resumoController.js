@@ -1,4 +1,32 @@
-app.controller('resumo',function($scope,googleSheet,config){
+app.controller('resumo',function($rootScope, $scope,googleSheet,config){
+    $rootScope.loading = true;
+    
+    $scope.meses = [
+        {value:1, label:'Janeiro'},
+        {value:2, label:'Fevereiro'},
+        {value:3, label:'Março'},
+        {value:4, label:'Abril'},
+        {value:5, label:'Maio'},
+        {value:6, label:'Junho'},
+        {value:7, label:'Julho'},
+        {value:8, label:'Agosto'},
+        {value:9, label:'Setembro'},
+        {value:10, label:'Outubro'},
+        {value:11, label:'Novembro'},
+        {value:12, label:'Dezembro'}
+    ];
+    
+    $scope.anos = [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+    ];
+    
+    $scope.mes = 7;
+    $scope.ano = 2015;
     
     /*
      * Função para ativar o popup do calendário
@@ -15,15 +43,22 @@ app.controller('resumo',function($scope,googleSheet,config){
     $scope.resumo = {};
     $scope.resumo.data = new Date();
     
-    googleSheet.setSpreadSheetId(config.idSheet);
-    googleSheet.setSheetName(config.sheetResumo);
-    googleSheet.getColumnData(['entrada','saida'],'associativeArray',function(data,status,message){
-       console.log(data); 
-       console.log(status); 
-       console.log(message); 
-       $scope.resumo.entrada = data[0].entrada;
-       $scope.resumo.saida = data[0].saida;
-       $scope.resumo.saldo = data[0].entrada - data[0].saida;
-       
-    });
+    $scope.updateResumo = function(){
+        $rootScope.loading = true;
+        googleSheet.setSpreadSheetId(config.idSheet);
+        googleSheet.setSheetName(config.sheetResumo);
+        googleSheet.getColumnData(['mesEAno','entrada','saida'],'associativeArray',function(data,status,message){
+           console.log(data);
+           angular.forEach(data,function(item){
+               if(item.mesEAno === $scope.mes+","+$scope.ano){
+                    $rootScope.loading = false;
+                    $scope.resumo.entrada = item.entrada;
+                    $scope.resumo.saida = item.saida;
+                    $scope.resumo.saldo = item.entrada - item.saida;
+               }
+           });
+           $rootScope.loading = false;
+        });
+    };
+    $scope.updateResumo();
 });
