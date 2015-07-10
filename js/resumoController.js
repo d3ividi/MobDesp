@@ -43,15 +43,19 @@ app.controller('resumo',function($rootScope, $scope, googleSheet, $filter, confi
         if(!$scope.resumo.dados){
             $scope.getData();
         }else{
-            angular.forEach($scope.resumo.dados,function(item){
-                if(item.mesEAno === $scope.mes+","+$scope.ano){
+            $scope.resumo.entrada = 0;
+            $scope.resumo.saida = 0;
+            $scope.resumo.saldo = 0;
+            var itens = $scope.resumo.dados;
+            for(var i in itens){
+                if(itens[i].mesEAno === $scope.mes+","+$scope.ano){
+                     $scope.resumo.entrada = itens[i].entrada;
+                     $scope.resumo.saida = itens[i].saida;
+                     $scope.resumo.saldo = itens[i].entrada - itens[i].saida;
                      $rootScope.loading = false;
-                     $scope.resumo.entrada = item.entrada;
-                     $scope.resumo.saida = item.saida;
-                     $scope.resumo.saldo = item.entrada - item.saida;
-                     $rootScope.loading = false;
+                     break;
                 }
-            });
+            }
         }
     };
     
@@ -62,6 +66,14 @@ app.controller('resumo',function($rootScope, $scope, googleSheet, $filter, confi
         $scope.updateResumo();
     };
     
-    $scope.updateResumo();
+    $scope.getLancamentos = function(){
+      googleSheet.setSheetName(config.sheetDados);
+      googleSheet.getAllRecords('associativeArray',function(data,status,message){
+          $scope.resumo.lancamentos = data.splice(data.length-10,10);
+      });
+    };
     
+    
+    $scope.updateResumo();
+    $scope.getLancamentos();
 });
