@@ -66,14 +66,5 @@ app.controller('resumo',function($rootScope, $scope, googleSheet, $filter, confi
         $scope.updateResumo();
     };
     
-    $scope.getLancamentos = function(){
-      googleSheet.setSheetName(config.sheetDados);
-      googleSheet.getAllRecords('associativeArray',function(data,status,message){
-          $scope.resumo.lancamentos = data.splice(data.length-10,10);
-      });
-    };
-    
-    
     $scope.updateResumo();
-    $scope.getLancamentos();
 });

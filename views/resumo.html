@@ -1,5 +1,5 @@
 <div ui-content-for="title">
-  <span>Resumo</span>
+  <span>Saldos</span>
 </div>
 
 <div class="scrollable" ng-controller="resumo">  
@@ -27,35 +27,7 @@
         
         <div class="btn btn-primary fa fa-chevron-right btn-right" ng-click="updateMonth(true)"></div>
 
-  </div>
-        
-        
-  <div class="list-group-item list-group-item-home"> 
-      
-      <h4>Últimos Lançamentos</h4>
-      <hr>
-      
-      <div class="panel panel-primary">
-        <!-- Default panel contents -->
-        <!-- Table -->
-        <table class="table table-striped">
-            <tr>
-                <th>Tipo Registro</th>
-                <th>Detalhes</th>
-                <th>Valor</th>
-                <th>Usuário</th>
-            </tr>
-            <tr ng-repeat="lan in resumo.lancamentos">
-                <td>{{lan.tipoRegistro}}</td>
-                <td>{{lan.detalhes}}</td>
-                <td>{{lan.valor}}</td>
-                <td>{{lan.usuario}}</td>
-            </tr>
-        </table>
-      </div>
-      
-  </div>
-        
+  </div>       
 
   </div>
 </div>

@@ -31,6 +31,7 @@ app.run(function($transform) {
 app.config(function($routeProvider) {
     $routeProvider.when('/',              {templateUrl: 'views/resumo.html', reloadOnSearch: false});
     $routeProvider.when('/form',         {templateUrl: 'views/form.html', reloadOnSearch: false});
+    $routeProvider.when('/lancamentos',         {templateUrl: 'views/lancamentos.html', reloadOnSearch: false});
 });
 
 app.constant('config',{
@@ -61,4 +62,10 @@ app.controller('MainController', function($rootScope, $scope){
   });
 
 
+});
+
+app.directive('filterData',function(){
+    return{
+      template : ""   
+    };
 });

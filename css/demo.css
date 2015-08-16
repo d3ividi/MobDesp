@@ -205,7 +205,3 @@ input.ng-valid, select.ng-valid {
     -webkit-animation-name: fadeOut; 
     animation-name: fadeOut; 
 }
-
-.footer{
-    padding-top: 10px;
-}
