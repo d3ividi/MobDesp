@@ -29,7 +29,7 @@ app.run(function($transform) {
 // in order to avoid unwanted routing.
 // 
 app.config(function($routeProvider) {
-    $routeProvider.when('/',              {templateUrl: 'views/resumo.html', reloadOnSearch: false});
+    $routeProvider.when('/',              {templateUrl: 'views/form.html', reloadOnSearch: false});
     $routeProvider.when('/form',         {templateUrl: 'views/form.html', reloadOnSearch: false});
     $routeProvider.when('/lancamentos',         {templateUrl: 'views/lancamentos.html', reloadOnSearch: false});
 });
