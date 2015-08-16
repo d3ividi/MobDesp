@@ -31,6 +31,7 @@ app.run(function($transform) {
 app.config(function($routeProvider) {
     $routeProvider.when('/',              {templateUrl: 'views/form.html', reloadOnSearch: false});
     $routeProvider.when('/form',         {templateUrl: 'views/form.html', reloadOnSearch: false});
+    $routeProvider.when('/resumo',         {templateUrl: 'views/resumo.html', reloadOnSearch: false});
     $routeProvider.when('/lancamentos',         {templateUrl: 'views/lancamentos.html', reloadOnSearch: false});
 });
 
