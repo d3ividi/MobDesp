@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-app.controller('formController',function($rootScope,$scope,googleSheet ){
+app.controller('formController',function($rootScope,$scope,googleSheet,util,$routeParams){
     $scope.lmto = {};
     $scope.params = {};
     
@@ -27,9 +27,11 @@ app.controller('formController',function($rootScope,$scope,googleSheet ){
         ]
     };
 
-    $scope.showCategorias = function(){
-        $scope.params.categoria = categorias[$scope.lmto.tipoRegistro];
+    $scope.showCategorias = function(tipoRegistro,selected){
+        $scope.params.categoria = categorias[tipoRegistro];
+        $scope.lmto.categoria = "Alimentação";
     };
+    
     
     $scope.enviar = function(){
         
@@ -57,5 +59,17 @@ app.controller('formController',function($rootScope,$scope,googleSheet ){
            
         });
     };
+            
+    if($routeParams.codigo){
+        $scope.lmto = $rootScope.lancamentos.filter(function(lan){
+            return lan.codigo == $routeParams.codigo;
+        })[0];
+        
+        var categoria = $scope.lmto.categoriaEntrada ? $scope.lmto.categoriaEntrada : $scope.lmto.categoriaSaida; 
+        
+        $scope.showCategorias($scope.lmto.tipoRegistro,categoria);
+        
+    }
+    
 });
 

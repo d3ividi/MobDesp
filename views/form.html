@@ -14,9 +14,9 @@
           <select name="tipoRegistro"
                   ng-model="lmto.tipoRegistro"
                   class="form-control"
-                  ng-change="showCategorias()"
+                  ng-change="showCategorias(lmto.tipoRegistro)"
                   required>
-              <option></option>
+              <option value="">Selecione uma opção</option>
               <option>Entrada</option>
               <option>Saída</option>
           </select>
@@ -31,7 +31,7 @@
                   ng-options="categoria as categoria for categoria in params.categoria"
                   ng-model="categoria"
                   class="form-control">
-              <option></option>
+              <option value="">Selecione uma opção</option>
               
           </select>
         </div>
@@ -74,7 +74,7 @@
             
     </div>
         
-         
+      {{lmto}}
 
 
     

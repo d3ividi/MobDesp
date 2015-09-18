@@ -9,6 +9,7 @@ var app = angular.module('Mobdesp', [
   'mtl.googleSheet',
   'ngSanitize',
   'ui.bootstrap',
+  'mtl.util',
   
   // touch/drag feature: this is from 'mobile-angular-ui.gestures.js'
   // it is at a very beginning stage, so please be careful if you like to use

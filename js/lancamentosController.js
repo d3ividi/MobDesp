@@ -8,11 +8,7 @@ app.controller('lancamentos',function($rootScope, $scope,googleSheet,config){
       googleSheet.getAllRecords('associativeArray',function(data,status,message){
           
           $scope.resumo.lancamentos = data.splice(data.length-50,50);
-          
-          $scope.resumo.lancamentos.forEach(function(item){
-              item.dataEHora = new Date(item.dataEHora);
-          });
-          
+          $rootScope.lancamentos = $scope.resumo.lancamentos;
           $rootScope.loading = false;
       });
     }; 

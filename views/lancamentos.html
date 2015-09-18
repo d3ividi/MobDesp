@@ -21,13 +21,17 @@
                       <th>Detalhes</th>
                       <th>Valor</th>
                   </tr>
-                  <tr ng-repeat="lan in resumo.lancamentos">
-                      
-                      <td>{{lan.usuario.split('@')[0]}}</td>
-                      <td>{{lan.detalhes}}</td>
-                      <td class="{{lan.tipoRegistro === 'Saída' ? 'red' : 'blue'}}"> {{lan.valor | currency}}</td>
-
-                  </tr>
+                  
+                    <tr ng-repeat="lan in resumo.lancamentos">
+                        
+                        <td>{{lan.usuario.split('@')[0]}}</td>
+                        <td>{{lan.detalhes}}</td>
+                        <td class="{{lan.tipoRegistro === 'Saída' ? 'red' : 'blue'}}"> {{lan.valor | currency}}</td>
+                        <td>
+                            <a href="#/form?codigo={{lan.codigo}}"><i class="fa fa-edit pull-right"></i></a>
+                        </td>
+                    </tr>
+                  
               </table>
             </div>
 
